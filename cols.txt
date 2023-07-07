@@ -40,3 +40,5 @@ TrueFalse_1	Is_Involved_Onboarding
 TrueFalse_2	Employer_Learning_Resources
 TrueFalse_3	Learning_Support
 ConvertedCompYearly	Annual_Salary
+OpSysProfessional use	OpSysProfessional_use 
+OpSysPersonal use	OpSysPersonal_use
