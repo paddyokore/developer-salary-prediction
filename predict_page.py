@@ -391,6 +391,6 @@ def show_predict_page():
        'DevType', 'LanguageHaveWorkedWith', 'Developer_Description'])
                 
         response = dt.predict(testdf) # predict salary
-        sl.subheader(f'The predicted annual salary is: {le.inverse_transform(response)[0]}') # output prediction
+        sl.subheader(f'The predicted annual salary is between: \{le.inverse_transform(response)[0]}') # output prediction
 
 
