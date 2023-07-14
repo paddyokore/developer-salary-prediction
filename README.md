@@ -2,7 +2,7 @@ developer-salary-prediction
 This repository contains code and resources for predicting developer salaries. The goal of this project is to develop a model that can accurately predict the salary of a developer based on various features such as programming languages, experience level, education, and location.
 
 Table of Contents
-Project Background
+Business Overview
 Stakeholders
 Business Understanding
 Project Statement
@@ -16,8 +16,9 @@ Evaluation
 Deployment
 Contributing
 License
-Project Background
-Africa’s Tech sector has become one of the fastest growing tech ecosystems in the world with tech being one of the fastest growing sectors in Africa. This has led to a rise in demand for jobs in the industry. However, unlike other parts of the world, information on remuneration in these jobs remains hard to come by. Existing resources such as glassdoor and brighter monday have limited information on salaries in Africa. Over the past few years, it has been observed that foreign companies enter the African Market, offering more competitive salaries compared to local companies resulting in mass movement of experienced developers into these new roles. This project seeks to solve this problem by developing a platform that can predict developer salaries based on their personal information, and also, providing comparison between different incomes in different regions for similar roles.
+
+Business Overview
+Syria Tel Company is a telecommunications company providing various services such as mobile, internet, and landline connections to customers in Syria. Customer churn, which is defined as customers quitting a service or transferring to a rival, is a worry for the business. Because it affects sales and client loyalty, churn is a major problem for the business. Your objective is to create a prediction model that can spot clients who are most likely to leave, allowing the business to take preventative action to keep them.
 
 Stakeholders
 Jobseekers
@@ -65,7 +66,6 @@ Jupyter Notebook
 Required Python libraries (numpy, pandas, scikit-learn, matplotlib, etc.)
 You can install the required Python libraries by running the following command:
 
-bash
 Copy code
 pip install -r requirements.txt
 Usage
@@ -80,7 +80,6 @@ bash
 Copy code
 cd developer-salary-prediction
 Launch Jupyter Notebook:
-bash
 Copy code
 jupyter notebook
 Open the Developer_Salary_Prediction.ipynb notebook in your browser.
