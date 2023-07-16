@@ -102,9 +102,11 @@ The evaluation of the models is based on several metrics, including F1 score, Pr
 
 ## Deployment
 
-/home/james/Downloads/Salary Prediction.JPG
+![image](https://github.com/paddyokore/developer-salary-prediction/assets/93999002/c3121e31-b9b8-4b31-b4ed-0e88f55ff894)
 
-/home/james/Downloads/Data Exploration.JPG
+![image](https://github.com/paddyokore/developer-salary-prediction/assets/93999002/b78c2698-7d90-4e10-ae3f-a81d571ae4c1)
+
+
 
 ## Contributing
 
