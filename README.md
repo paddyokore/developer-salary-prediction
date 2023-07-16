@@ -1,4 +1,4 @@
-# developer-salary-prediction
+![image](https://github.com/paddyokore/developer-salary-prediction/assets/93999002/9cb33ae9-a9e0-4c77-8b95-80d4cde90b2a)# developer-salary-prediction
 This repository contains code and resources for predicting developer salaries. The goal of this project is to develop a model that can accurately predict the salary of a developer based on various features such as programming languages, experience level, education, and location..
 
 ## Table of Contents
@@ -94,8 +94,9 @@ The modeling process involves building a classification model to predict develop
 
 The evaluation of the models is based on several metrics, including F1 score, Precision, Recall, and Accuracy score. The performance of the models is compared, and the model with the best performance which is Random Forest is selected as the final model.
 
+![image](https://github.com/paddyokore/developer-salary-prediction/assets/93999002/f65eacb4-5bfa-4d26-ae57-89055ede3962)
 
-![image](https://github.com/paddyokore/developer-salary-prediction/assets/93999002/31c46a96-c18f-4a70-984c-4f8dfbb81958)
+
 
 
 
