@@ -1,4 +1,4 @@
-# developer-salary-prediction
+# DEVELOPER-SALARY-PREDICTION
 This repository contains code and resources for predicting developer salaries. The goal of this project is to develop a model that can accurately predict the salary of a developer based on various features such as programming languages, experience level, education, and location..
 
 ## Table of Contents
