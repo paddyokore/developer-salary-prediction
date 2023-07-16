@@ -1,4 +1,4 @@
-![image](https://github.com/paddyokore/developer-salary-prediction/assets/93999002/9cb33ae9-a9e0-4c77-8b95-80d4cde90b2a)# developer-salary-prediction
+# developer-salary-prediction
 This repository contains code and resources for predicting developer salaries. The goal of this project is to develop a model that can accurately predict the salary of a developer based on various features such as programming languages, experience level, education, and location..
 
 ## Table of Contents
