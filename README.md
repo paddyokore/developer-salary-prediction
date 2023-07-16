@@ -33,18 +33,18 @@ This project seeks to solve this problem by developing a platform that can predi
   
 ## Business Understanding
 
-Salary negotiation can be a critical stage in the job search process, and job seekers often encounter various challenges during this phase like lack of information on salary trends. This means that a jobseeker might spend valuable time researching industry salary trends. Some might not be so lucky as the information might be non existent.
-As the Tech labour market becomes more competitive, offering the right salary for new and current employees is crucial for employers as it means keeping or losing a valued resource. Thus it is imperative for them to offer fair and competitive compensation that is benchmarked to their industry
-Our project looks at coming up with salary prediction model to help both jobseekers and employers with the above challenges. We will focus on the tech industry (developers) and use data from stackoverflow's annual developer survey.
+Salary negotiation can be a critical stage in the job search process, and job seekers often encounter various challenges during this phase like lack of information on salary trends. This means that a job seeker might spend valuable time researching industry salary trends. Some might not be so lucky as the information might be non-existent.
+As the Tech labor market becomes more competitive, offering the right salary for new and current employees is crucial for employers as it means keeping or losing a valued resource. Thus it is imperative for them to offer fair and competitive compensation that is benchmarked to their industry
+Our project looks at coming up with a salary prediction model to help both job seekers and employers with the above challenges. We will focus on the tech industry (developers) and use data from Stackoverflow's annual developer survey.
 
 ## Problem Statement
 
 Our solution to the problem of inadequate salary data for both employees and employers is to develop a salary prediction model, to estimate salaries based on relevant job specifications. The model will assist in making informed decisions related to compensation and provide valuable insights for both job seekers and employers.
-The salary prediction model will enable job seekers to have a better understanding of the salary expectations associated with their qualifications and experience. Employers can use the model to make informed decisions regarding fair compensation packages for new hires or salary adjustments for existing employees. Job sites like linkedin, glassdoor, brigther monday can use this model for jobs displayed on the sites by quoting the estimated salaries.
+The salary prediction model will enable job seekers to have a better understanding of the salary expectations associated with their qualifications and experience. Employers can use the model to make informed decisions regarding fair compensation packages for new hires or salary adjustments for existing employees. Job sites like LinkedIn, glassdoor, brigther Monday can use this model for jobs displayed on the sites by quoting the estimated salaries.
 
 ## Objectives
 
-- The main objective of this project is to come up with a salary rediction model that will:
+The main objective of this project is to come up with a salary prediction model that will:
 - Enable Jobseekers to ask for competitive salaries during contract negotiations.
 - Assist employers in offering fair compensation to their employees.
 - Assist Recruitment agencies offer accurate salary estimates to their clients.
@@ -52,9 +52,9 @@ The salary prediction model will enable job seekers to have a better understandi
 These objectives will be achieved through the following specific objectives:
 
 - To select the most important features in the dataset to be used in Salary prediction.
-- To describe how features such as Proffessional experience and Education level affect Annual compensation.
+- To describe how features such as Professional experience and Education level affect Annual compensation.
 - To build multiple regression models and identify the most suitable model to be used in the prediction.
-- To deploy the model using streamlit as an online dashboard.
+- To deploy the model using Streamlit as an online dashboard.
 
 ## Success Metrics
 
