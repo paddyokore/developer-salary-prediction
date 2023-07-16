@@ -59,19 +59,9 @@ These objectives will be achieved through the following specific objectives:
 ## Success Metrics
 
 The metrics to be used to measure the success of the model are:
-- Mean Absolute Error
-- Root Mean Square Error
-- Rsquared
-
-For the regression model and;
-- F1 score
-- Precision
-- Recall
-- Accuracy score
-
-For the classification model 
-
-An Accuracy score of 75% or more on the training data and 70% on the test data will be considered a success.
+- Root Mean Square Error of close to 0
+- A high R_squared value
+- Accuracy score of 70% on the test data
   
 ## Installation
 
