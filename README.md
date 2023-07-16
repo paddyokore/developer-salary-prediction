@@ -102,7 +102,9 @@ The evaluation of the models is based on several metrics, including F1 score, Pr
 
 ## Deployment
 
-We use streamlit to delpoy..............(unfinished)
+/home/james/Downloads/Salary Prediction.JPG
+
+/home/james/Downloads/Data Exploration.JPG
 
 ## Contributing
 
