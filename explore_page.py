@@ -7,6 +7,7 @@ import seaborn as sns
 sns.set_style('dark')
 import warnings
 warnings.filterwarnings('ignore')
+import pickle
 
 def rename(data):
 
@@ -52,7 +53,8 @@ def load_data():
             'DevType', 'LanguageHaveWorkedWith', 'Developer_Description', 
             'Gender', 'Age', 'Annual_Salary', 'continents']
 
-    df = pd.read_csv("survey_results_public.csv")
+    original_df = pd.read_csv("survey_results_public.csv")
+    df = original_df.copy()
     continents = {
         'Asia': ['Israel', 'Hong Kong (S.A.R.)', 'India', 'China', 'Singapore', 'Iraq',
                  'Philippines', 'Iran, Islamic Republic of...', 'Indonesia', 'Afghanistan',
@@ -149,9 +151,9 @@ def load_data():
     new_column1 = df.groupby('continents')['Annual_Salary'].apply(lambda x: x.fillna(continent_mapping[x.name]))
     df['Annual_Salary'] = new_column1.reset_index(level=0, drop=True)
     
-    return df
+    return df, original_df
 
-df = load_data()
+df, original_df = load_data()
 
 def show_explore_page():
     sl.title("Understand The Data")
@@ -161,25 +163,70 @@ def show_explore_page():
         ### Stack Overflow Developer Survey 2022
         """)
     
-    tab1, tab2, tab3, tab4, tab5 = sl.tabs(['\# of Developers', 'Annual Salary', 'Work Experience', 'Education', 'Online Certs'])
+    tab1, tab2, tab3, tab4, tab5, tab6 = sl.tabs(['\# of Developers', 'Annual Salary', 'Work Experience', 'Education', 'Online Certs', 'Languages'])
     
     with tab1:
-        data = df["continents"].value_counts()
+        data = df["continents"].value_counts().sort_values(ascending=True)
 
         sl.write("""#### Number of Developers By Continent""")
 
-        sl.bar_chart(data)
+        # Set the figure size and create a subplot
+        fig, ax = plt.subplots(figsize=(8, 4))
+
+        # Plot the bar chart
+        ax.barh(data.index, data.values/df.shape[0], color='#6cb6ff')
+
+        # Set the background color
+        fig.set_facecolor('#262730')
+        ax.set_facecolor('#262730')
+
+        # Customize the axis labels and tick parameters
+        ax.set_xlabel('% of Developers', fontsize=12, color='white')
+        ax.set_ylabel('Continent', fontsize=12, color='white')
+        ax.tick_params(axis='x', labelsize=10, colors='white')
+        ax.tick_params(axis='y', labelsize=10, colors='white')
+
+        # Remove the top and right spines
+        ax.spines['top'].set_visible(False)
+        ax.spines['right'].set_visible(False)
+
+        # Adjust the layout
+        fig.tight_layout()
+
+        sl.pyplot(fig) 
 
     with tab2:
         sl.write(
             """
-        #### Average Annual Salary in USD Per Continent
+        #### Median Annual Salary in USD Per Continent
         """
         )
-
         
-        data = df.groupby(["continents"])["Annual_Salary"].mean().sort_values(ascending=True)
-        sl.bar_chart(data)
+        data = df.groupby(["continents"])["Annual_Salary"].median().sort_values(ascending=True)
+        # Set the figure size and create a subplot
+        fig, ax = plt.subplots(figsize=(8, 4))
+
+        # Plot the bar chart
+        ax.barh(data.index, data.values, color='#6cb6ff')
+
+        # Set the background color
+        fig.set_facecolor('#262730')
+        ax.set_facecolor('#262730')
+
+        # Customize the axis labels and tick parameters
+        ax.set_xlabel('Median Salary', fontsize=12, color='white')
+        ax.set_ylabel('Continent', fontsize=12, color='white')
+        ax.tick_params(axis='x', labelsize=10, colors='white')
+        ax.tick_params(axis='y', labelsize=10, colors='white')
+
+        # Remove the top and right spines
+        ax.spines['top'].set_visible(False)
+        ax.spines['right'].set_visible(False)
+
+        # Adjust the layout
+        fig.tight_layout()
+
+        sl.pyplot(fig) 
 
     with tab3:
         sl.write(
@@ -189,22 +236,123 @@ def show_explore_page():
         )
 
         data = [df[df['Pro_Experience'].astype('float') <= 20].Pro_Experience.astype('int')]
-        group_labels = ['Work Experience in years']
-        fig = ff.create_distplot(data, group_labels, bin_size=0.9, histnorm= '')
-        fig.update_layout(showlegend=False, width=700, bargap=0.01)
-        sl.plotly_chart(fig)
+        # Set the figure size and create a subplot
+        fig, ax = plt.subplots(figsize=(8, 4))
+
+        # Plot the bar chart
+        ax.hist(data, color='#6cb6ff', bins=7)
+
+        # Set the background color
+        fig.set_facecolor('#262730')
+        ax.set_facecolor('#262730')
+
+        # Customize the axis labels and tick parameters
+        ax.set_xlabel('Work Experience in Years', fontsize=12, color='white')
+        ax.set_ylabel('Count', fontsize=12, color='white')
+        ax.tick_params(axis='x', labelsize=10, colors='white')
+        ax.tick_params(axis='y', labelsize=10, colors='white')
+
+        # Remove the top and right spines
+        ax.spines['top'].set_visible(False)
+        ax.spines['right'].set_visible(False)
+
+        # Adjust the layout
+        fig.tight_layout()
+
+        sl.pyplot(fig) 
 
     with tab4:
-        data = df["Education_Level"].value_counts()
+        data = df["Education_Level"].value_counts().sort_values(ascending=True)
 
         sl.write("""#### Level of Education""")
 
-        sl.bar_chart(data)    
+        # Set the figure size and create a subplot
+        fig, ax = plt.subplots(figsize=(8, 4))
+
+        # Plot the bar chart
+        ax.barh(data.index, data.values/df.shape[0], color='#6cb6ff')
+
+        # Set the background color
+        fig.set_facecolor('#262730')
+        ax.set_facecolor('#262730')
+
+        xtk = ['Professional Degree', 'Something else', 'Primary school',
+                'Doctoral Degree', 'Associate degree', 'Secondary School',
+                'College/Uni without degree', "Master's degree",
+                "Bachelor's degree"]
+
+        # Customize the axis labels and tick parameters
+        ax.set_xlabel('% Count', fontsize=12, color='white')
+        ax.set_ylabel('Education Level', fontsize=12, color='white')
+        ax.tick_params(axis='x', labelsize=10, colors='white')
+        ax.tick_params(axis='y', labelsize=10, colors='white')
+        ax.set_yticklabels(xtk)
+
+        # Remove the top and right spines
+        ax.spines['top'].set_visible(False)
+        ax.spines['right'].set_visible(False)
+
+        # Adjust the layout
+        fig.tight_layout()
+
+        sl.pyplot(fig) 
 
     with tab5:
-        data = df["Code_Certifications"].value_counts()
+        data = df["Code_Certifications"].value_counts().sort_values(ascending=True)
 
 
         sl.write("""#### Online Certifications""")
 
-        sl.bar_chart(data) 
+        # Set the figure size and create a subplot
+        fig, ax = plt.subplots(figsize=(8, 4))
+
+        # Plot the bar chart
+        ax.barh(data.index, data.values/df.shape[0], color='#6cb6ff')
+
+        # Set the background color
+        fig.set_facecolor('#262730')
+        ax.set_facecolor('#262730')
+
+        # Customize the axis labels and tick parameters
+        ax.set_xlabel('% Count', fontsize=12, color='white')
+        ax.set_ylabel('Online Certifications', fontsize=12, color='white')
+        ax.tick_params(axis='x', labelsize=10, colors='white')
+        ax.tick_params(axis='y', labelsize=10, colors='white')
+
+        # Remove the top and right spines
+        ax.spines['top'].set_visible(False)
+        ax.spines['right'].set_visible(False)
+
+        # Adjust the layout
+        fig.tight_layout()
+
+        sl.pyplot(fig) 
+
+    with tab6:
+        data = original_df.LanguageHaveWorkedWith.str.split(';').explode().value_counts().sort_values(ascending=True).tail(15)
+
+        sl.write("""#### Programming Languages Used""")
+        # Set the figure size and create a subplot
+        fig, ax = plt.subplots(figsize=(8, 4))
+
+        # Plot the bar chart
+        ax.barh(data.index, data.values/original_df.shape[0], color='#6cb6ff')
+
+        # Set the background color
+        fig.set_facecolor('#262730')
+        ax.set_facecolor('#262730')
+
+        # Customize the axis labels and tick parameters
+        ax.set_xlabel('% Count', fontsize=12, color='white')
+        ax.set_ylabel('Programming Languages', fontsize=12, color='white')
+        ax.tick_params(axis='x', labelsize=10, colors='white')
+        ax.tick_params(axis='y', labelsize=10, colors='white')
+
+        # Remove the top and right spines
+        ax.spines['top'].set_visible(False)
+        ax.spines['right'].set_visible(False)
+
+        # Adjust the layout
+        fig.tight_layout()
+
+        sl.pyplot(fig) 

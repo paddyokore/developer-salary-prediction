@@ -6,6 +6,7 @@ import pandas as pd
 import warnings
 from streamlit_extras.switch_page_button import switch_page
 warnings.filterwarnings('ignore')
+import matplotlib.pyplot as plt
 
 # load the prediction model
 def load_model():
@@ -351,7 +352,7 @@ def show_predict_page():
     lang = 'Which of the following langages have you worked with before?'
     devdesc = ('Which of the following statements describes you?')
 
-    tab1, tab2, tab3, tab4 = sl.tabs(["Step 1", "Step 2", "Step 3", "Final Step"])
+    tab1, tab2, tab3, tab4, tab5 = sl.tabs(["Step 1", "Step 2", "Step 3", "Step 4", "Salary Predictors"])
 
     with tab1:
         
@@ -411,5 +412,41 @@ def show_predict_page():
             - **drafting an awesone cv:**             https://flowcv.com/.
             - **github account layout:**              https://www.youtube.com/watch?v=vblMsgrGjrw.
                         """)
+
+    with tab5:
+        sl.write("""#### Factors that Predict Salary""")
+
+        name = dt[0].get_feature_names_out()
+        importance = dt[1].feature_importances_
+
+        feat_imp = pd.Series(importance, index=name).sort_values(ascending=True)
+
+        x = feat_imp.index
+        y = feat_imp.values
+        # Set the figure size and create a subplot
+        fig, ax = plt.subplots(figsize=(8, 4))
+
+        # Plot the bar chart
+        ax.barh(x, y, color='#6cb6ff')
+
+        # Set the background color
+        fig.set_facecolor('#262730')
+        ax.set_facecolor('#262730')
+
+        # Customize the axis labels and tick parameters
+        ax.set_xlabel('Importance in %', fontsize=12, color='white')
+        ax.set_ylabel('Features', fontsize=12, color='white')
+        ax.tick_params(axis='x', labelsize=10, colors='white')
+        ax.tick_params(axis='y', labelsize=10, colors='white')
+
+        # Remove the top and right spines
+        ax.spines['top'].set_visible(False)
+        ax.spines['right'].set_visible(False)
+
+        # Adjust the layout
+        fig.tight_layout()
+
+        sl.pyplot(fig) 
+
 
 
