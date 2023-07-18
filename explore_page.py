@@ -174,7 +174,10 @@ def show_explore_page():
         fig, ax = plt.subplots(figsize=(8, 4))
 
         # Plot the bar chart
-        ax.barh(data.index, data.values/df.shape[0], color='#6cb6ff')
+        hbars = ax.barh(data.index, data.values/df.shape[0]*100, color='#6cb6ff')
+
+        # bar labels
+        ax.bar_label(hbars, fmt='%.0f%%', color='white', padding=8)
 
         # Set the background color
         fig.set_facecolor('#262730')
@@ -189,6 +192,8 @@ def show_explore_page():
         # Remove the top and right spines
         ax.spines['top'].set_visible(False)
         ax.spines['right'].set_visible(False)
+        ax.spines['bottom'].set_visible(False)
+        ax.spines['left'].set_visible(False)
 
         # Adjust the layout
         fig.tight_layout()
@@ -207,7 +212,10 @@ def show_explore_page():
         fig, ax = plt.subplots(figsize=(8, 4))
 
         # Plot the bar chart
-        ax.barh(data.index, data.values, color='#6cb6ff')
+        hbars = ax.barh(data.index, data.values, color='#6cb6ff')
+
+        # bar labels
+        ax.bar_label(hbars, fmt='${:,.0f}', color='white', padding=8)        
 
         # Set the background color
         fig.set_facecolor('#262730')
@@ -222,6 +230,8 @@ def show_explore_page():
         # Remove the top and right spines
         ax.spines['top'].set_visible(False)
         ax.spines['right'].set_visible(False)
+        ax.spines['bottom'].set_visible(False)
+        ax.spines['left'].set_visible(False)
 
         # Adjust the layout
         fig.tight_layout()
@@ -270,7 +280,10 @@ def show_explore_page():
         fig, ax = plt.subplots(figsize=(8, 4))
 
         # Plot the bar chart
-        ax.barh(data.index, data.values/df.shape[0], color='#6cb6ff')
+        hbars = ax.barh(data.index, data.values/df.shape[0]*100, color='#6cb6ff')        
+        
+        # bar labels
+        ax.bar_label(hbars, fmt='%.0f%%', color='white', padding=8)        
 
         # Set the background color
         fig.set_facecolor('#262730')
@@ -291,6 +304,8 @@ def show_explore_page():
         # Remove the top and right spines
         ax.spines['top'].set_visible(False)
         ax.spines['right'].set_visible(False)
+        ax.spines['bottom'].set_visible(False)
+        ax.spines['left'].set_visible(False)
 
         # Adjust the layout
         fig.tight_layout()
@@ -307,7 +322,10 @@ def show_explore_page():
         fig, ax = plt.subplots(figsize=(8, 4))
 
         # Plot the bar chart
-        ax.barh(data.index, data.values/df.shape[0], color='#6cb6ff')
+        hbars = ax.barh(data.index, data.values/df.shape[0]*100, color='#6cb6ff')
+
+        # bar labels
+        ax.bar_label(hbars, fmt='%.0f%%', color='white', padding=8)        
 
         # Set the background color
         fig.set_facecolor('#262730')
@@ -322,6 +340,8 @@ def show_explore_page():
         # Remove the top and right spines
         ax.spines['top'].set_visible(False)
         ax.spines['right'].set_visible(False)
+        ax.spines['bottom'].set_visible(False)
+        ax.spines['left'].set_visible(False)
 
         # Adjust the layout
         fig.tight_layout()
@@ -336,7 +356,10 @@ def show_explore_page():
         fig, ax = plt.subplots(figsize=(8, 4))
 
         # Plot the bar chart
-        ax.barh(data.index, data.values/original_df.shape[0], color='#6cb6ff')
+        hbars = ax.barh(data.index, data.values/original_df.shape[0]*100, color='#6cb6ff')
+
+        # bar labels
+        ax.bar_label(hbars, fmt='%.0f%%', color='white', padding=8)        
 
         # Set the background color
         fig.set_facecolor('#262730')
@@ -351,6 +374,8 @@ def show_explore_page():
         # Remove the top and right spines
         ax.spines['top'].set_visible(False)
         ax.spines['right'].set_visible(False)
+        ax.spines['bottom'].set_visible(False)
+        ax.spines['left'].set_visible(False)
 
         # Adjust the layout
         fig.tight_layout()

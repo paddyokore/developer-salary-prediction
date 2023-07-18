@@ -352,8 +352,26 @@ def show_predict_page():
     lang = 'Which of the following langages have you worked with before?'
     devdesc = ('Which of the following statements describes you?')
 
-    tab1, tab2, tab3, tab4, tab5 = sl.tabs(["Step 1", "Step 2", "Step 3", "Step 4", "Salary Predictors"])
+    tab0, tab1, tab2, tab3, tab4, tab5 = sl.tabs(["About", "Step 1", "Step 2", "Step 3", "Step 4", "Salary Predictors"])
 
+    with tab0:
+        sl.write("""
+        #### Project Overview
+        
+        All of us at one point or another have wondered what we should be earning given our qualifications
+        and experience. 
+        
+        Job platforms might be excellent, but have limited data on salaries in Africa. These 
+        platforms also focus on a wide range of professions, so the dynamic nature of developer jobs can fall 
+        between the cracks. 
+
+        Our answer this is a platform that accounts for regional differences to estimate salary. We:
+        - focus on the developer ecosystem and predictors of their salary
+        - provide a salary band, rather than one ballpark figure - more realistic given the range of companies
+        - suggest resources to help developers in salary negotiation and job interviews
+
+        For more information on the project, go to: [github](https://github.com/paddyokore/developer-salary-prediction)
+        """)
     with tab1:
         
         DevType = sl.selectbox(role, DevType)
@@ -406,10 +424,11 @@ def show_predict_page():
             sl.subheader(f'The predicted annual salary is between: \{le.inverse_transform(response)[0]}') # output prediction
 
             sl.write("""
-            You can refer to the below resources for:        
+            You can refer to the below resources for:  
+            - **salary negotiation tips:**            https://www.linkedin.com/pulse/4-salary-negotiation-dialogue-examples-you-should-use-liene-ozola/    
             - **coding interview questions:**         https://www.codility.com/.
             - **non-technical interview questions:**  https://novoresume.com/career-blog/behavioral-interview-questions.
-            - **drafting an awesone cv:**             https://flowcv.com/.
+            - **drafting an awesome cv:**             https://flowcv.com/.
             - **github account layout:**              https://www.youtube.com/watch?v=vblMsgrGjrw.
                         """)
 
@@ -422,12 +441,15 @@ def show_predict_page():
         feat_imp = pd.Series(importance, index=name).sort_values(ascending=True)
 
         x = feat_imp.index
-        y = feat_imp.values
+        y = feat_imp.values*100
         # Set the figure size and create a subplot
         fig, ax = plt.subplots(figsize=(8, 4))
 
         # Plot the bar chart
-        ax.barh(x, y, color='#6cb6ff')
+        hbars = ax.barh(x, y, color='#6cb6ff')
+
+        # bar labels
+        ax.bar_label(hbars, fmt='%.0f%%', color='white', padding=8)         
 
         # Set the background color
         fig.set_facecolor('#262730')
@@ -442,6 +464,8 @@ def show_predict_page():
         # Remove the top and right spines
         ax.spines['top'].set_visible(False)
         ax.spines['right'].set_visible(False)
+        ax.spines['bottom'].set_visible(False)
+        ax.spines['left'].set_visible(False)
 
         # Adjust the layout
         fig.tight_layout()
