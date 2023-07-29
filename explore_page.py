@@ -2,12 +2,13 @@ import streamlit as sl
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import plotly.figure_factory as ff
-import seaborn as sns
-sns.set_style('dark')
+#import plotly.figure_factory as ff
+#import seaborn as sns
+#sns.set_style('dark')
 import warnings
 warnings.filterwarnings('ignore')
 import pickle
+#import plotly.graph_objects as go
 
 def rename(data):
 
@@ -53,7 +54,7 @@ def load_data():
             'DevType', 'LanguageHaveWorkedWith', 'Developer_Description', 
             'Gender', 'Age', 'Annual_Salary', 'continents']
 
-    original_df = pd.read_csv("survey_results_public.csv")
+    original_df = pd.read_csv("survey_results_public.zip")
     df = original_df.copy()
     continents = {
         'Asia': ['Israel', 'Hong Kong (S.A.R.)', 'India', 'China', 'Singapore', 'Iraq',
@@ -163,8 +164,15 @@ def show_explore_page():
         ### Stack Overflow Developer Survey 2022
         """)
     
-    tab1, tab2, tab3, tab4, tab5, tab6 = sl.tabs(['\# of Developers', 'Annual Salary', 'Work Experience', 'Education', 'Online Certs', 'Languages'])
+    tab0, tab1, tab2, tab3, tab4, tab5, tab6 = sl.tabs(['Countries', 'Continents', 'Annual Salary', 'Work Experience', 'Education', 'Online Certs', 'Languages'])
     
+    with tab0:
+
+        sl.write("""#### Number of Developers By Country""")
+
+        # Create a file uploader widget
+        sl.image('map.JPG', use_column_width=True)
+
     with tab1:
         data = df["continents"].value_counts().sort_values(ascending=True)
 

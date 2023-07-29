@@ -4,7 +4,7 @@ import pickle
 import numpy as np
 import pandas as pd
 import warnings
-from streamlit_extras.switch_page_button import switch_page
+#from streamlit_extras.switch_page_button import switch_page
 warnings.filterwarnings('ignore')
 import matplotlib.pyplot as plt
 
@@ -372,6 +372,7 @@ def show_predict_page():
 
         For more information on the project, go to: [github](https://github.com/paddyokore/developer-salary-prediction)
         """)
+
     with tab1:
         
         DevType = sl.selectbox(role, DevType)
@@ -425,11 +426,12 @@ def show_predict_page():
 
             sl.write("""
             You can refer to the below resources for:  
-            - **salary negotiation tips:**            https://www.linkedin.com/pulse/4-salary-negotiation-dialogue-examples-you-should-use-liene-ozola/    
-            - **coding interview questions:**         https://www.codility.com/.
-            - **non-technical interview questions:**  https://novoresume.com/career-blog/behavioral-interview-questions.
-            - **drafting an awesome cv:**             https://flowcv.com/.
-            - **github account layout:**              https://www.youtube.com/watch?v=vblMsgrGjrw.
+            - **salary negotiation tips:**            [dialogue examples](https://www.linkedin.com/pulse/4-salary-negotiation-dialogue-examples-you-should-use-liene-ozola/)    
+            - **coding interview questions:**         [codility](https://www.codility.com/), [leetcode](https://leetcode.com/), [hackerrank](https://www.hackerrank.com/)
+            - **non-technical interview questions:**  [behavioral](https://novoresume.com/career-blog/behavioral-interview-questions), [soft skills](https://join.com/recruitment-hr-blog/top-soft-skills-interview-questions)
+            - **drafting an awesome cv:**             [flowcv](https://flowcv.com/)
+            - **github account layout:**              [My GitHub Profile Makeover](https://www.youtube.com/watch?v=vblMsgrGjrw)
+            - **remote jobs:**                        [turing](https://www.turing.com/), [we work remotely](https://weworkremotely.com/), [buitlin](https://builtin.com/jobs/remote)
                         """)
 
     with tab5:
